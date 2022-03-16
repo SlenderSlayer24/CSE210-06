@@ -1,6 +1,6 @@
 class Color:
     #color starts and ends here. Creating the color value that we use in other files
-    def __init__(self, red, green, blue, alpha = 255):
+    def __init__(self, red, green, blue, alpha):
         self._red = red
         self._green = green
         self._blue = blue 
