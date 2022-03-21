@@ -7,7 +7,7 @@ class Script:
         #Constructs a new Action.
         self._actions = {}
 
-        def add_action(self, group, action):
+    def add_action(self, group, action):
         #Adds an action to the given group.
         if not group in self._actions.keys():
             self._actions[group] = []

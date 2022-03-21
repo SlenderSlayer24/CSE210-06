@@ -13,6 +13,7 @@ CAPTION = "SPACE INVADERS GALATIC!"
 WHITE = Color(255,255,255,255)
 ENEMY = Color(255,0,0,255)
 PLAYER = Color(0,255,0,255)
+SHIP_LENGTH = 1
 '''
 shields should be at least somewhat transparent so the player knows
 they can shoot through them and visiably see their own bullets passing 

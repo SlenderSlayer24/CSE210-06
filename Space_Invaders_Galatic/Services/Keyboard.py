@@ -1,5 +1,5 @@
 import pyray
-from point import Point
+from Space_Invaders_Galatic.Services.point import Point
 
 
 class KeyboardService:
