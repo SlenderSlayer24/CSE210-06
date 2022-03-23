@@ -1,4 +1,4 @@
-from Space_Invaders_Galatic.Scripting.action import Action
+from game.scripting.action import Action
 
 class MoveActorsAction(Action): 
     def __init__(self):

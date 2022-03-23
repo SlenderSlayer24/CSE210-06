@@ -1,7 +1,7 @@
 from turtle import right
 import constants
-from Space_Invaders_Galatic.Scripting.action import Action
-from Space_Invaders_Galatic.Services.point import Point
+from game.scripting.action import Action
+from game.services.point import Point
 
 LEFT = Point(-constants.CELL_SIZE, 0)
 RIGHT= Point(constants.CELL_SIZE, 0)

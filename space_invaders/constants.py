@@ -1,4 +1,4 @@
-from Space_Invaders_Galatic.Services.color import Color
+from game.services.color import Color
 
 #The screen, cell size, font
 COLUMNS = 40

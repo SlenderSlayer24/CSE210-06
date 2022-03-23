@@ -1,6 +1,6 @@
 import constants
-from Space_Invaders_Galatic.Services.color import Color
-from Space_Invaders_Galatic.Services.point import Point
+from game.services.color import Color
+from game.services.point import Point
 
 class Actor:
     #The visual parts of the game.

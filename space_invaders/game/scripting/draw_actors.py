@@ -1,4 +1,4 @@
-from Space_Invaders_Galatic.Scripting.action import Action
+from game.scripting.action import Action
 
 class Draw_Actors(Action):
     #An output action that draws all the actors.

@@ -3,11 +3,11 @@ from game.casting.actor import Actor
 from game.casting.point import Point
 
 
-class Racket(Actor):
+class Ship(Actor):
     """A implement used to hit and bounce the ball in the game."""
     
     def __init__(self, body, animation, debug = False):
-        """Constructs a new Bat.
+        """Constructs a new Ship.
         
         Args:Args:
             body: A new instance of Body.
@@ -19,7 +19,7 @@ class Racket(Actor):
         self._animation = animation
 
     def get_animation(self):
-        """Gets the bat's animation.
+        """Gets the ship's animation.
         
         Returns:
             An instance of Animation.
@@ -27,7 +27,7 @@ class Racket(Actor):
         return self._animation
 
     def get_body(self):
-        """Gets the bat's body.
+        """Gets the ship's body.
         
         Returns:
             An instance of Body.
@@ -35,23 +35,23 @@ class Racket(Actor):
         return self._body
 
     def move_next(self):
-        """Moves the bat using its velocity."""
+        """Moves the ship using its velocity."""
         position = self._body.get_position()
         velocity = self._body.get_velocity()
         new_position = position.add(velocity)
         self._body.set_position(new_position)
 
     def swing_left(self):
-        """Steers the bat to the left."""
-        velocity = Point(-RACKET_VELOCITY, 0)
+        """Steers the ship to the left."""
+        velocity = Point(-SHIP_VELOCITY, 0)
         self._body.set_velocity(velocity)
         
     def swing_right(self):
-        """Steers the bat to the right."""
-        velocity = Point(RACKET_VELOCITY, 0)
+        """Steers the ship to the right."""
+        velocity = Point(SHIP_VELOCITY, 0)
         self._body.set_velocity(velocity)
     
     def stop_moving(self):
-        """Stops the bat from moving."""
+        """Stops the ship from moving."""
         velocity = Point(0, 0)
         self._body.set_velocity(velocity)
