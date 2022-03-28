@@ -42,7 +42,7 @@ def game_over():
 # mixer.music.play(-1)
   
 # player
-playerImage = pygame.image.load('images/ship.png')
+playerImage = pygame.image.load('messing_around\images\ship.png')
 player_X = 370
 player_Y = 523
 player_Xchange = 0
@@ -56,7 +56,7 @@ invader_Ychange = []
 no_of_invaders = 8
   
 for num in range(no_of_invaders):
-    invaderImage.append(pygame.image.load('images/alien.png'))
+    invaderImage.append(pygame.image.load('messing_around/images/alien.png'))
     invader_X.append(random.randint(64, 737))
     invader_Y.append(random.randint(30, 180))
     invader_Xchange.append(1.2)
@@ -65,7 +65,7 @@ for num in range(no_of_invaders):
 # Bullet
 # rest - bullet is not moving
 # fire - bullet is moving
-bulletImage = pygame.image.load('images/bullet.png')
+bulletImage = pygame.image.load('messing_around/images/bullet.png')
 bullet_X = 0
 bullet_Y = 500
 bullet_Xchange = 0
@@ -139,8 +139,8 @@ while running:
             if abs(player_X-invader_X[i]) < 80:
                 for j in range(no_of_invaders):
                     invader_Y[j] = 2000
-                    explosion_sound = mixer.Sound('data/explosion.wav')
-                    explosion_sound.play()
+                    # explosion_sound = mixer.Sound('data/explosion.wav')
+                    # explosion_sound.play()
                 game_over()
                 break
   
