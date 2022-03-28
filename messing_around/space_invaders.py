@@ -5,6 +5,9 @@ from pygame import mixer
   
 # initializing pygame
 pygame.init()
+
+# constants
+DEFAULT_IMAGE_SIZE = (50, 50)
   
 # creating screen
 screen_width = 800
@@ -14,7 +17,7 @@ screen = pygame.display.set_mode((screen_width,
   
 # caption and icon
 pygame.display.set_caption("Welcome to Space\
-Invaders Game by:- styles")
+Invaders Game by:- Jordan Kraude")
   
   
 # Score
@@ -42,13 +45,14 @@ def game_over():
 # mixer.music.play(-1)
   
 # player
-playerImage = pygame.image.load('messing_around\images\ship.png')
+playerImage1 = pygame.image.load('messing_around\images\ship.png')
+playerImage = pygame.transform.scale(playerImage1, DEFAULT_IMAGE_SIZE)
 player_X = 370
 player_Y = 523
 player_Xchange = 0
   
 # Invader
-invaderImage = []
+invaderlist = []
 invader_X = []
 invader_Y = []
 invader_Xchange = []
@@ -56,16 +60,19 @@ invader_Ychange = []
 no_of_invaders = 8
   
 for num in range(no_of_invaders):
-    invaderImage.append(pygame.image.load('messing_around/images/alien.png'))
+    invaderImage1 = pygame.image.load('messing_around/images/alien.png')
+    invaderImage = pygame.transform.scale(invaderImage1, DEFAULT_IMAGE_SIZE)
+    invaderlist.append(invaderImage)
     invader_X.append(random.randint(64, 737))
     invader_Y.append(random.randint(30, 180))
-    invader_Xchange.append(1.2)
-    invader_Ychange.append(50)
+    invader_Xchange.append(.6)
+    invader_Ychange.append(40)
   
 # Bullet
 # rest - bullet is not moving
 # fire - bullet is moving
-bulletImage = pygame.image.load('messing_around/images/bullet.png')
+bulletImage1 = pygame.image.load('messing_around/images/bullet.png')
+bulletImage = pygame.transform.scale(bulletImage1, DEFAULT_IMAGE_SIZE)
 bullet_X = 0
 bullet_Y = 500
 bullet_Xchange = 0
@@ -85,7 +92,7 @@ def player(x, y):
     screen.blit(playerImage, (x - 16, y + 10))
   
 def invader(x, y, i):
-    screen.blit(invaderImage[i], (x, y))
+    screen.blit(invaderlist[i], (x, y))
   
 def bullet(x, y):
     global bullet_state
