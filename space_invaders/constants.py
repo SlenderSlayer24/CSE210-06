@@ -1,22 +1,16 @@
-from game.services.color import Color
+from game.shared.color import Color
+import random
 
-#The screen, cell size, font
 COLUMNS = 40
 ROWS = 20
-CELL_SIZE = 15
+CELL_SIZE = 20
 MAX_X = 900
 MAX_Y = 600
-FRAME_RATE = 15
+FRAME_RATE = 10
 FONT_SIZE = 15
-#colors red, gree, blue, alpha/transparency
-CAPTION = "SPACE INVADERS GALATIC!"
-WHITE = Color(255,255,255,255)
-ENEMY = Color(255,0,0,255)
-PLAYER = Color(0,255,0,255)
-SHIP_LENGTH = 1
-'''
-shields should be at least somewhat transparent so the player knows
-they can shoot through them and visiably see their own bullets passing 
-through it.
-'''
-SHIELD = Color(0,0,255,155)
+CAPTION = "SPACE INVADERS"
+WHITE = Color(255, 255, 255)
+GREEN = Color(0, 255, 0)
+YELLOW = Color(255, 255, 0)
+RED = Color(255, 0, 0)
+BLUE = Color(150, 150, 255)

@@ -1,57 +1,62 @@
-from constants import *
+from itertools import cycle
+import constants
+import random
 from game.casting.actor import Actor
-from game.casting.point import Point
+from game.shared.point import Point
 
 
 class Ship(Actor):
-    """A implement used to hit and bounce the ball in the game."""
-    
-    def __init__(self, body, animation, debug = False):
-        """Constructs a new Ship.
-        
-        Args:Args:
-            body: A new instance of Body.
-            animation: A new instance of Animation.
-            debug: If it is being debugged. 
-        """
-        super().__init__(debug)
-        self._body = body
-        self._animation = animation
+    """
+    An Awsome Space Ship
 
-    def get_animation(self):
-        """Gets the ship's animation.
-        
-        Returns:
-            An instance of Animation.
-        """
-        return self._animation
+    Attributes:
+        _points (int): The number of points the food is worth.
+    """
+    def __init__(self):
+        super().__init__()
+        self._segments = []
+        self._prepare_body()
 
-    def get_body(self):
-        """Gets the ship's body.
-        
-        Returns:
-            An instance of Body.
-        """
-        return self._body
+    def get_segments(self):
+        return self._segments
 
     def move_next(self):
-        """Moves the ship using its velocity."""
-        position = self._body.get_position()
-        velocity = self._body.get_velocity()
-        new_position = position.add(velocity)
-        self._body.set_position(new_position)
+        # move all segments
+        for segment in self._segments:
+            segment.move_next()
 
-    def swing_left(self):
-        """Steers the ship to the left."""
-        velocity = Point(-SHIP_VELOCITY, 0)
-        self._body.set_velocity(velocity)
-        
-    def swing_right(self):
-        """Steers the ship to the right."""
-        velocity = Point(SHIP_VELOCITY, 0)
-        self._body.set_velocity(velocity)
+
+        # update velocities
+        for i in range(len(self._segments) - 1, 0, -1):
+            trailing = self._segments[i]
+            previous = self._segments[i - 1]
+            velocity = previous.get_velocity()
+            trailing.set_velocity(velocity)
+
+    def get_head(self):
+        return self._segments[0]
     
-    def stop_moving(self):
-        """Stops the ship from moving."""
-        velocity = Point(0, 0)
-        self._body.set_velocity(velocity)
+    def get_position(self):
+        return self.get_head().get_position()
+
+    def turn_head(self, velocity):
+        for segment in self._segments:
+            segment.set_velocity(velocity)
+
+    def _prepare_body(self):
+        x = 800
+        y = 500
+
+        for i in range(1):
+            position = Point(x - i * constants.CELL_SIZE, y)
+            velocity = Point(1 * constants.CELL_SIZE, 0)
+            text = ".^." if i == 0 else "#"
+            color = constants.BLUE if i == 0 else constants.RED
+
+            
+            segment = Actor()
+            segment.set_position(position)
+            segment.set_velocity(velocity)
+            segment.set_text(text)
+            segment.set_color(color)
+            self._segments.append(segment)
